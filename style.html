@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKITFLIX | Premium OTT Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader-container">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Hidden Funny Alert for 'SKIT' Search -->
+    <div id="funnyAlert" class="funny-alert-overlay">
+        <div class="funny-box">
+            <i class="fas fa-hourglass-half spin-icon"></i>
+            <h2>IIT Jagatpura ki movies still processing me hai jiii...</h2>
+            <p>Tab tak campus ki thadi par chai piyo! ☕</p>
+            <button class="btn btn-primary" onclick="closeAlerts()">Back to SKITFlix</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="glass-nav">
+        <div class="nav-left">
+            <a href="#" class="logo" onclick="closeAlerts()">SKIT<span>FLIX</span></a>
+            <ul class="nav-links">
+                <li><a href="#" class="active" onclick="closeAlerts()">Home</a></li>
+                <li><a href="#">TV Shows</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">New & Popular</a></li>
+                <li><a href="#" onclick="showToast('Opening My List...')">My List (<span id="listCount">0</span>)</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search movies, skit, kanji boys...">
+            </div>
+            <i class="fas fa-bell" onclick="showToast('No new notifications')"></i>
+            <i class="fas fa-moon" id="themeToggle" title="Toggle Theme"></i>
+            <div class="profile">
+                <img src="https://ui-avatars.com/api/?name=SK&background=E50914&color=fff" alt="Profile">
+            </div>
+        </div>
+    </nav>
+
+    <!-- KANJI BOYS Search Results Container (Hidden by Default) -->
+    <div id="kanjiBoysResults" class="search-results-page">
+        <h2 class="results-title">Search Results for: "Kanji Boys"</h2>
+        <div class="netflix-grid">
+            <!-- Custom Movie Cards for Kanji Boys -->
+            <div class="movie-card">
+                <img src="https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=600&auto=format&fit=crop" alt="Hostel">
+                <div class="card-info">
+                    <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                    <h3>The Kota Journey</h3>
+                    <p>Drama • 2026</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop" alt="Matrix">
+                <div class="card-info">
+                    <span class="rating"><i class="fas fa-star"></i> 5.0</span>
+                    <h3>Code 50: CSE Mystery</h3>
+                    <p>Thriller • 2026</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=600&auto=format&fit=crop" alt="Romance">
+                <div class="card-info">
+                    <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                    <h3>Sona's Symphony</h3>
+                    <p>Romance • 2025</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=600&auto=format&fit=crop" alt="Stocks">
+                <div class="card-info">
+                    <span class="rating"><i class="fas fa-star"></i> 4.6</span>
+                    <h3>Groww: Wall Street</h3>
+                    <p>Documentary • 2026</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=600&auto=format&fit=crop" alt="Tech">
+                <div class="card-info">
+                    <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                    <h3>AI Hackathon</h3>
+                    <p>Sci-Fi • 2025</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?q=80&w=600&auto=format&fit=crop" alt="Gaming">
+                <div class="card-info">
+                    <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                    <h3>Jaipur Nights</h3>
+                    <p>Action • 2026</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN PAGE CONTENT (Hero + Sliders) -->
+    <div id="mainContent">
+        <header class="hero" id="heroSlider">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop');">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1>Kanji Boys: The Awakening</h1>
+                    <p>In a dystopian hostel block, a group of backbenchers uncovers a hidden Wi-Fi password that threatens the fragile balance of assignment submissions.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showToast('Playing Episode 1...')"><i class="fas fa-play"></i> Play</button>
+                        <button class="btn btn-secondary" id="moreInfoBtn"><i class="fas fa-info-circle"></i> More Info</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Trending Section -->
+            <section class="movie-section">
+                <h2 class="section-title">Trending in Hostel</h2>
+                <div class="horizontal-slider" id="trendingSlider">
+                    <div class="movie-card">
+                        <img src="https://images.unsplash.com/photo-1618666012174-83b441c0bc76?q=80&w=600&auto=format&fit=crop" alt="Movie">
+                        <div class="card-info">
+                            <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                            <h3>Mass Bunk</h3>
+                            <button class="add-list-btn" onclick="addToWatchlist(event)">+ My List</button>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="https://images.unsplash.com/photo-1505635552518-3448ff116af3?q=80&w=600&auto=format&fit=crop" alt="Movie">
+                        <div class="card-info">
+                            <span class="rating"><i class="fas fa-star"></i> 5.0</span>
+                            <h3>The Vivatronic</h3>
+                            <button class="add-list-btn" onclick="addToWatchlist(event)">+ My List</button>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="https://images.unsplash.com/photo-1545696968-1a5245650b36?q=80&w=600&auto=format&fit=crop" alt="Movie">
+                        <div class="card-info">
+                            <span class="rating"><i class="fas fa-star"></i> 4.5</span>
+                            <h3>Canteen Diaries</h3>
+                            <button class="add-list-btn" onclick="addToWatchlist(event)">+ My List</button>
+                        </div>
+                    </div>
+                    <div class="movie-card">
+                        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600&auto=format&fit=crop" alt="Movie">
+                        <div class="card-info">
+                            <span class="rating"><i class="fas fa-star"></i> 4.2</span>
+                            <h3>Last Night Prep</h3>
+                            <button class="add-list-btn" onclick="addToWatchlist(event)">+ My List</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Continue Watching -->
+            <section class="movie-section">
+                <h2 class="section-title">Continue Watching</h2>
+                <div class="continue-grid">
+                    <div class="continue-card">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=600&auto=format&fit=crop" alt="Show">
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 85%;"></div>
+                        </div>
+                        <button class="resume-btn" onclick="showToast('Resuming...')"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="continue-card">
+                        <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=600&auto=format&fit=crop" alt="Show">
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 30%;"></div>
+                        </div>
+                        <button class="resume-btn" onclick="showToast('Resuming...')"><i class="fas fa-play"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories -->
+            <section class="movie-section">
+                <h2 class="section-title">Popular Categories</h2>
+                <div class="category-grid">
+                    <div class="category-card" onclick="showToast('Action selected')">Action</div>
+                    <div class="category-card" onclick="showToast('Comedy selected')">Comedy</div>
+                    <div class="category-card" onclick="showToast('Horror selected')">Horror</div>
+                    <div class="category-card" onclick="showToast('Sci-Fi selected')">Sci-Fi</div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#">FAQ</a>
+                    <a href="#">Help Center</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+                <div class="social-icons">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <p>&copy; 2026 SKITFlix. Built for Web Dev Competition.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- More Info Modal Pop-up -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Kanji Boys: The Awakening (Season 1)</h2>
+            <p class="modal-meta">2026 • 8 Episodes • Grade: A++</p>
+            <p>Featuring an all-star cast of local legends, assignment copies, and late-night canteen runs. Experience the high-stakes thriller of clearing mid-terms without opening the book until 4 AM.</p>
+            <button class="btn btn-primary" style="margin-top: 15px;" onclick="showToast('Starting Episode 1')"><i class="fas fa-play"></i> Start Bingeing</button>
+        </div>
+    </div>
+
+    <!-- Utilities -->
+    <div id="toast" class="toast">Notification Message</div>
+    <button id="scrollTop" class="scroll-top"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="style.js"></script>
+</body>
+</html>
